@@ -1,33 +1,28 @@
-package ht.lafleur;
+package ht.lafleur.claude;
 
 
-import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
+import dev.langchain4j.model.anthropic.AnthropicChatModel;
 import dev.langchain4j.model.chat.ChatModel;
-import dev.langchain4j.model.chat.request.ChatRequest;
-import dev.langchain4j.model.chat.response.ChatResponse;
-import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
-import dev.langchain4j.model.output.TokenUsage;
-import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
 import dev.langchain4j.service.AiServices;
+import ht.lafleur.AssistantMeteo;
+import ht.lafleur.MeteoTool;
 
-import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Test7 {
 
     public static void main(String[] args) {
-        String geminiKey = System.getenv("GEMINI_KEY");
+        String claudeKey = System.getenv("CLAUDE_KEY");
 
-        if (geminiKey == null || geminiKey.isBlank()) {
+        if (claudeKey == null || claudeKey.isBlank()) {
             System.err.println("Environment variable GEMINI_KEY is missing.");
             return;
         }
 
-        ChatModel model = GoogleAiGeminiChatModel.builder()
-                .apiKey(geminiKey)
-                .modelName("gemini-flash-latest")
+        ChatModel model = AnthropicChatModel.builder()
+                .apiKey(claudeKey)
+                .modelName("claude-sonnet-4-6")
                 .temperature(0.3)
                 .build();
 
