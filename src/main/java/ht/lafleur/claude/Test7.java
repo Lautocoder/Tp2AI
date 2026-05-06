@@ -24,6 +24,8 @@ public class Test7 {
                 .apiKey(claudeKey)
                 .modelName("claude-sonnet-4-6")
                 .temperature(0.3)
+                .logRequests(true)
+                .logResponses(true)
                 .build();
 
         AssistantMeteo assistant =
